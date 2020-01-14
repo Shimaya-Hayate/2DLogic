@@ -43,7 +43,7 @@ public class CardController : MonoBehaviour
         {
             key = "KEY" + i;
             cardCount[i] = PlayerPrefs.GetInt(key, 2);//ロード
-            cardCountText[i].text = "残り" + cardCount[i] + "枚";//表示
+            cardCountText[i].text = "x" + cardCount[i];//表示
         }
     }
 
@@ -81,7 +81,7 @@ public class CardController : MonoBehaviour
                 type[i] = n; //ブロックの種類を保存
                 i++;
                 cardCount[n]--; //カードの枚数を減らす
-                cardCountText[n].text = "残り" + cardCount[n] + "枚";//表示
+                cardCountText[n].text = "x" + cardCount[n];//表示
             }
         }
     }
@@ -98,7 +98,7 @@ public class CardController : MonoBehaviour
             full = false;
 
             cardCount[type[j]]++; //カードの枚数を増やす
-            cardCountText[type[j]].text = "残り" + cardCount[type[j]] + "枚";//表示
+            cardCountText[type[j]].text = "x" + cardCount[type[j]];//表示
         }
     }
 
