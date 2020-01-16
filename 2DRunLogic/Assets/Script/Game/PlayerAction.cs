@@ -39,13 +39,15 @@ public class PlayerAction : MonoBehaviour
         pos.x += x * v * Time.timeScale;
 
         //ジャンプ処理
-
-        if (jampCount < maxJampCount)//ジャンプの回数が上限を超えていないなら
+        if (Time.timeScale != 0)//停止状態でなく
         {
-            if (Input.GetKeyDown(KeyCode.Space))// スペースキーが押されたら
+            if (jampCount < maxJampCount)//ジャンプの回数が上限を超えていないなら
             {
-                y = 1;
-                jampCount += 1;
+                if (Input.GetKeyDown(KeyCode.Space))// スペースキーが押されたら
+                {
+                    y = 1;
+                    jampCount += 1;
+                }
             }
         }
 

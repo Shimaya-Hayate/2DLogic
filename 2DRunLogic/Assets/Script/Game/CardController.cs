@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CardController : MonoBehaviour
 {
     public GameObject[] card; //カードのオリジナル
-    Vector3 defoultPosition = new Vector3(1405, 630-330, 0); //生成場所
+    Vector3 defoultPosition = new Vector3(620, 920, 0); //生成場所
     public GameObject mainPanel; //親指定（フォルダ指定）
 
     [System.NonSerialized]
@@ -33,7 +33,6 @@ public class CardController : MonoBehaviour
     void Start()
     {
         playerCon = player.GetComponent<PlayerController>();
-
         CardCountRoad();
     }
     
@@ -55,17 +54,17 @@ public class CardController : MonoBehaviour
         //5列3行になるよう配置
         if (i < 5)
         {
-            position.x += 100 * i;
+            position.x += 130 * i;
         }
         else if (i < 10)
         {
-            position.x += 100 * (i - 5);
-            position.y -= 100;
+            position.x += 130 * (i - 5);
+            position.y -= 120;
         }
         else if (i < 15)
         {
-            position.x += 100 * (i - 10);
-            position.y -= 200;
+            position.x += 130 * (i - 10);
+            position.y -= 240;
         }
         else
         {
@@ -191,6 +190,7 @@ public class CardController : MonoBehaviour
     //リセット
     public void Reset()
     {
+        Time.timeScale = 1;
         //実行中でなければ
         if (run == false)
         {
