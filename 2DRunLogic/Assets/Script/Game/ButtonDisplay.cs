@@ -5,21 +5,17 @@ using UnityEngine;
 public class ButtonDisplay : MonoBehaviour
 {
     public GameObject[] displayObject; //表示させるオブジェクト
-    
-    bool active = false;
 
     public void Display(int x)
     {
-        if (active)
+        if (displayObject[x].activeSelf)//アクティブなら
         {
             displayObject[x].SetActive(false);
-            active = false;
         }
         else
         {
             nonDisplay();
-            displayObject[x].SetActive(true);
-            active = true;           
+            displayObject[x].SetActive(true);           
         }
     }
 

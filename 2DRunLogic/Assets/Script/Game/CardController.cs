@@ -18,7 +18,8 @@ public class CardController : MonoBehaviour
     bool full = false; //フルかどうか
 
     //Run()
-    int num;
+    [System.NonSerialized]
+    public int num;
     float wateTime = 1.0f;
     bool run = false;
 
@@ -41,7 +42,7 @@ public class CardController : MonoBehaviour
         for (int i = 0; i < cardCountText.Length; i++)
         {
             key = "KEY" + i;
-            cardCount[i] = PlayerPrefs.GetInt(key, 2);//ロード
+            cardCount[i] = PlayerPrefs.GetInt(key, 3);//ロード
             cardCountText[i].text = "x" + cardCount[i];//表示
         }
     }
@@ -74,13 +75,13 @@ public class CardController : MonoBehaviour
         //フルでなければ生成
         if (full == false)
         {
-            if (cardCount[n] > 0)
+            if (cardCount[n/4] > 0)
             {
                 cardClone[i] = Instantiate(card[n], position, Quaternion.identity, mainPanel.transform);
                 type[i] = n; //ブロックの種類を保存
                 i++;
-                cardCount[n]--; //カードの枚数を減らす
-                cardCountText[n].text = "x" + cardCount[n];//表示
+                cardCount[n/4]--; //カードの枚数を減らす
+                cardCountText[n/4].text = "x" + cardCount[n/4];//表示
             }
         }
     }
@@ -96,8 +97,8 @@ public class CardController : MonoBehaviour
             i--;
             full = false;
 
-            cardCount[type[j]]++; //カードの枚数を増やす
-            cardCountText[type[j]].text = "x" + cardCount[type[j]];//表示
+            cardCount[type[j/4]]++; //カードの枚数を増やす
+            cardCountText[type[j/4]].text = "x" + cardCount[type[j/4]];//表示
         }
     }
 
@@ -197,6 +198,11 @@ public class CardController : MonoBehaviour
             CancelInvoke(); //Invoke処理を取り消す
             num = 0; //実行順序リセット
             playerCon.PlayerReset(); //座標と速度リセット
+        }
+        else
+        {
+            Stop();
+            Reset();
         }
 
     }
