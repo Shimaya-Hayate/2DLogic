@@ -97,8 +97,8 @@ public class CardController : MonoBehaviour
             i--;
             full = false;
 
-            cardCount[type[j/4]]++; //カードの枚数を増やす
-            cardCountText[type[j/4]].text = "x" + cardCount[type[j/4]];//表示
+            cardCount[type[j]/4]++; //カードの枚数を増やす
+            cardCountText[type[j]/4].text = "x" + cardCount[type[j]/4];//表示
         }
     }
 
@@ -172,14 +172,14 @@ public class CardController : MonoBehaviour
             if (run)
             {
                 Invoke("Run", wateTime); //wateTimeの間隔で動作
+                num++;
             }
         }
         //すべての動作が終了したら
         else
         {
             run = false;
-        }
-            num++;
+        }  
     }
 
     public void Stop()

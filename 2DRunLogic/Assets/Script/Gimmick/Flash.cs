@@ -7,6 +7,8 @@ public class Flash : MonoBehaviour
     public GameObject flashBlock;
     public GameObject cardController;
     CardController cardCon;
+
+    bool oddNum = false;//奇数：true・偶数：false
     
     void Start()
     {
@@ -15,19 +17,26 @@ public class Flash : MonoBehaviour
 
     void Update()
     {
-        if (cardCon.num % 2 == 1)
+        if (oddNum)//前回が奇数の時
         {
-            flashBlock.SetActive(true);
+            if (cardCon.num % 2 == 0)//偶数なら
+            {
+                flashBlock.SetActive(false);
+                oddNum = false;
+            }
         }
         else
         {
-            flashBlock.SetActive(false);
+            if (cardCon.num % 2 == 1)//奇数なら
+            {
+                flashBlock.SetActive(true);
+                oddNum = true;
+            }
         }
 
-        if(cardCon.num == 0)
+        if (cardCon.num == 0)
         {
             flashBlock.SetActive(true);
         }
-
     }
 }
