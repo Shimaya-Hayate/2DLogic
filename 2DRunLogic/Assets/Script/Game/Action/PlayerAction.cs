@@ -11,17 +11,13 @@ public class PlayerAction : MonoBehaviour
     //ジャンプ処理用
     public float jampPower = 10;                 //ジャンプ力
     float y;                         //スペースキーon(+1)、off(0)
-    float currentDropSpeed = 0;      //現在の落下速度
     public int maxJampCount = 1;
     int jampCount = 0;               //ジャンプの回数
-
-    public GameObject itemController;
-    ItemController itemCon;
 
     // Start is called before the first frame update
     void Start()
     {
-        itemCon = itemController.GetComponent<ItemController>();
+       
     }
 
     // Update is called once per frame
@@ -55,9 +51,6 @@ public class PlayerAction : MonoBehaviour
         }
 
         myTransform.position = pos; //座標の更新
-
-        if (Input.GetKey("l"))
-            itemCon.Shot();
     }
 
     void FixedUpdate()

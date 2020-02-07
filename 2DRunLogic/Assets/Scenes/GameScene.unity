@@ -3796,7 +3796,7 @@ GameObject:
   - component: {fileID: 403897455}
   m_Layer: 0
   m_Name: APlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3890,7 +3890,6 @@ MonoBehaviour:
   v: 0.2
   jampPower: 12
   maxJampCount: 1
-  itemController: {fileID: 1664440610}
 --- !u!54 &403897455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4016,7 +4015,6 @@ MonoBehaviour:
   v: 0.1
   jampPower: 15
   maxJampCount: 1
-  itemController: {fileID: 0}
 --- !u!54 &405772600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14368,7 +14366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c53b4fbb5b1a0647afce97f8b102a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: []
+  player: {fileID: 403897449}
+  item:
+  - {fileID: 278878338241318294, guid: 0726f9a04ec90214bb29746652b98f22, type: 3}
+  - {fileID: 4064762743854774202, guid: 1bcbd56d114907e4f84c694d2377cd80, type: 3}
 --- !u!1001 &1696437071
 PrefabInstance:
   m_ObjectHideFlags: 0
