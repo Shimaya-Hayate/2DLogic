@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     public GameObject treasureController;
     TreasureController treasureCon;
 
+    bool hit = false;//当たったらtrueに
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,38 +30,41 @@ public class EnemyController : MonoBehaviour
     //当たり判定に触れた時
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "RedBullet") //赤リンゴが当たる
+        if (hit == false)
         {
-            if (redType)//自分が赤タイプなら
+            if (other.gameObject.tag == "RedBullet") //赤リンゴが当たる
             {
-                Hit(1);//良い宝
+                if (redType)//自分が赤タイプなら
+                {
+                    Hit(1);//良い宝
+                }
+                else
+                {
+                    Hit(0);//悪い宝
+                }
             }
-            else
+
+            if (other.gameObject.tag == "BlueBullet") //青リンゴが当たる
             {
-                Hit(0);//悪い宝
+                if (blueType)//自分が青タイプなら
+                {
+                    Hit(1);//良い宝
+                }
+                else
+                {
+                    Hit(0);//悪い宝
+                }
             }
         }
-
-        if (other.gameObject.tag == "BlueBullet") //青リンゴが当たる
-        {
-            if (blueType)//自分が青タイプなら
-            {
-                Hit(1);//良い宝
-            }
-            else
-            {
-                Hit(0);//悪い宝
-            }
-        }
-
-        Debug.Log("BBB");
     }
 
     void Hit(int n)
     {
+        hit = true;
         treasureCon.treasureType = enemyType;
         treasureCon.goodType = n;
         treasureCon.enemyPosition = this.transform.position;
         treasureCon.CreateTreasureChest();
+        Destroy(this.gameObject);//自身を削除
     }
 }

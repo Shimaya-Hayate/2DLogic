@@ -37,22 +37,14 @@ public class PlayerAction : MonoBehaviour
 
         stageMove = false;
 
-        /*if (Input.GetKey("d"))
-        {
-            if (pos.x >= stayPos)
-            {
-                x = 0;
-                stageMove = true;
-            }
-            else
-            {
-                x = 1;
-            }
-        }
+        if (Input.GetKey("d"))
+            Move(1);
 
         if (Input.GetKey("a"))
-            x = -1;
-            */
+            Move(-1);
+
+        if ((Input.GetKeyUp("a")) || (Input.GetKeyUp("d")))
+            Move(0);
 
         if (x == 1)
         {

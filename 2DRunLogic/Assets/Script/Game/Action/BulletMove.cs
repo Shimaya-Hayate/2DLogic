@@ -37,6 +37,5 @@ public class BulletMove : MonoBehaviour
         {
             Destroy(this.gameObject);//自身を削除
         }
-        Debug.Log("AAA");
     }
 }

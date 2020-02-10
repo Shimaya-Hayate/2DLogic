@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TreasureChest : MonoBehaviour
 {
-    public int move;
-    public int move2;
-    public int jump;
+    public int[] card = new int[100];
+
+    [System.NonSerialized]
+    public bool hit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +29,12 @@ public class TreasureChest : MonoBehaviour
             TreasureOpen();
         }
 
-        Debug.Log("TC");
+        
     }
 
     void TreasureOpen()
     {
-        Debug.Log("TO");
+        Destroy(this.gameObject);//自身を削除
+        hit = true;
     }
 }
