@@ -53,7 +53,9 @@ public class TreasureController : MonoBehaviour
     
     public void CreateTreasureChest()
     {
-        Vector3 pos = new Vector3(0, 0, 0);
+        Vector3 pos = new Vector3(0, 0, 0); //微調整する座標
+
+        pos.y -= 0.5f;
 
         for (int i = 0; i <= goodType; i++)
         {

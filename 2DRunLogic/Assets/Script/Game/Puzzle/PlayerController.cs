@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float v = 0.1f; //速度
+    float v = 0.1f; //速度
     [System.NonSerialized]
     public float vX, vZ; //方向
     [System.NonSerialized]
@@ -20,10 +20,13 @@ public class PlayerController : MonoBehaviour
     [System.NonSerialized]
     public bool reset = false;
 
+    Vector3 rot = new Vector3(0, 0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
         initialPosition = this.transform.position;
+        rot = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -35,27 +38,12 @@ public class PlayerController : MonoBehaviour
         //静止中なら
         if(stop)
         {
-            /* 
-            if (Input.GetKeyDown("up"))
-                vZ = 1;
-
-            if (Input.GetKeyDown("down"))
-                vZ = -1;
-                */
-
             if(vZ != 0)
             {
                 vX = 0;
                 stop = false;
                 posZ = pos.z; //座標を保存
             }
-            /*
-            if (Input.GetKeyDown("right"))
-                vX = 1;
-
-            if (Input.GetKeyDown("left"))
-                vX = -1;
-                */
 
             if (vX != 0)
             {
@@ -97,10 +85,30 @@ public class PlayerController : MonoBehaviour
         }
         //ジャンプ中なら
         if (jamp)
+        {
             pos.y = initialPosition.y + 1f;
-        //else
-           // pos.y = initialPosition.y;
+        }
+
         myTransform.position = pos; //座標の更新
+
+        //向きの変更
+        if(vZ > 0)
+        {
+            rot.y = 0;
+        }
+        else if(vX > 0)
+        {
+            rot.y = 90;
+        }
+        else if(vZ < 0)
+        {
+            rot.y = 180;
+        }
+        else if(vX < 0)
+        {
+            rot.y = 270;
+        }
+        myTransform.eulerAngles = rot; //角度の変更
     }
 
     public void PlayerReset()

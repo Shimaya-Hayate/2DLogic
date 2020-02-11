@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CardController : MonoBehaviour
 {
     public GameObject[] card; //カードのオリジナル
-    public Vector3 defoultPosition = new Vector3(620, 920, 0); //生成場所
+    public Vector3 defoultPosition = new Vector3(450, 1100, 0); //生成場所
     public GameObject mainPanel; //親指定（フォルダ指定）
 
     [System.NonSerialized]
@@ -58,7 +58,7 @@ public class CardController : MonoBehaviour
         {
             position.x += 70 * i;
         }
-        else if (i < 10)
+        /*else if (i < 10)
         {
             position.x += 70 * (i - 5);
             position.y -= 70;
@@ -67,7 +67,7 @@ public class CardController : MonoBehaviour
         {
             position.x += 70 * (i - 10);
             position.y -= 140;
-        }
+        }*/
         else
         {
             full = true;

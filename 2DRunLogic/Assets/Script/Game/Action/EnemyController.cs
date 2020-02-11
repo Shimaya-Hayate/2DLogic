@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
     void Hit(int n)
     {
         hit = true;
-        treasureCon.treasureType = enemyType;
+        treasureCon.treasureType = enemyType - 1;
         treasureCon.goodType = n;
         treasureCon.enemyPosition = this.transform.position;
         treasureCon.CreateTreasureChest();
